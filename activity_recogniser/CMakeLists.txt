@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(consent_tsc)
+project(activity_recogniser)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -7,8 +7,6 @@ project(consent_tsc)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
-  actionlib
-  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -18,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -44,29 +42,33 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-# Generate messages in the 'msg' folder
-add_message_files(
-   FILES
-   ConsentResult.msg
-)
+## Generate messages in the 'msg' folder
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
-# Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  UserConsent.srv
-)
+## Generate services in the 'srv' folder
+# add_service_files(
+#   FILES
+#   Service1.srv
+#   Service2.srv
+# )
 
-# Generate actions in the 'action' folder
-add_action_files(
-  FILES
-  ManageConsent.action
-)
+## Generate actions in the 'action' folder
+# add_action_files(
+#   FILES
+#   Action1.action
+#   Action2.action
+# )
 
-# Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  actionlib_msgs
-)
+## Generate added messages and services with any dependencies listed here
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
+
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
@@ -98,8 +100,8 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES activity_data
-   CATKIN_DEPENDS rospy std_msgs
+#  LIBRARIES activity_recogniser
+#  CATKIN_DEPENDS rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -115,24 +117,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(activity_data
-#   src/${PROJECT_NAME}/activity_data.cpp
+# add_library(activity_recogniser
+#   src/${PROJECT_NAME}/activity_recogniser.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(activity_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(activity_recogniser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(activity_data_node src/activity_data_node.cpp)
+# add_executable(activity_recogniser_node src/activity_recogniser_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(activity_data_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(activity_recogniser_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(activity_data_node
+# target_link_libraries(activity_recogniser_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -151,7 +153,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS activity_data activity_data_node
+# install(TARGETS activity_recogniser activity_recogniser_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -176,7 +178,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_activity_data.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_activity_recogniser.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

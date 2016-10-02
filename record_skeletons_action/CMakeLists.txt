@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(consent_tsc)
+project(record_skeletons_action)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   actionlib
   actionlib_msgs
+#  skeleton_tracker
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,27 +46,25 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 # Generate messages in the 'msg' folder
-add_message_files(
-   FILES
-   ConsentResult.msg
-)
+#add_message_files(
+#   FILES
+#)
 
 # Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  UserConsent.srv
-)
+#add_service_files(
+#  FILES
+#  DeleteImages.srv
+#)
 
 # Generate actions in the 'action' folder
 add_action_files(
-  FILES
-  ManageConsent.action
+  DIRECTORY action
+  FILES skeleton.action
 )
 
 # Generate added messages and services with any dependencies listed here
 generate_messages(
-  DEPENDENCIES
-  actionlib_msgs
+ DEPENDENCIES actionlib_msgs
 )
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -98,8 +97,8 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES activity_data
-   CATKIN_DEPENDS rospy std_msgs
+#   LIBRARIES activity_data
+   CATKIN_DEPENDS rospy std_msgs #skeleton_tracker
 #  DEPENDS system_lib
 )
 
