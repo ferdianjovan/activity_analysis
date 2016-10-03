@@ -94,6 +94,7 @@ class skeleton_server(object):
 
         while (end - start).secs < duration.secs and request_consent == 0:
             if self._as.is_preempt_requested():
+                 self._as_change.cancel_all_goals()
                  break
 
             for cnt, (uuid, incr_msgs) in enumerate(self.sk_publisher.accumulate_data.items()):
