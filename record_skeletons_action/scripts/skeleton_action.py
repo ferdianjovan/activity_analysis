@@ -147,7 +147,7 @@ class skeleton_server(object):
 
         # Ferdi's stuff
         # just to make sure that Ferdi's action is closed properly
-        self._as_change.wait_for_result()
+        self._as_change.wait_for_result(10)
         # Ferdi's stuff
         print "finished action\n"
 
